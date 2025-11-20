@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-void ft_putnbr(int n, int *len)
+void	ft_putnbr(int n, int *len)
 {
 	if (n == INT_MIN)
 	{

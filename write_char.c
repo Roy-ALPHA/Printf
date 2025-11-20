@@ -11,17 +11,19 @@
 /* ************************************************************************** */
 
 #include "header.h"
-void write_char(int c, int *len)
+
+void	write_char(int c, int *len)
 {
-    ssize_t test;
-    test = 0;
-    if (*len == -1)
-        return ;
-    test = write (1, &c, 1);
-    if (test == -1)
-    {
-        *len = -1;
-        return ;
-    }
-    *len += test; 
+	ssize_t	test;
+
+	test = 0;
+	if (*len == -1)
+		return ;
+	test = write(1, &c, 1);
+	if (test == -1)
+	{
+		*len = -1;
+		return ;
+	}
+	*len += test;
 }

@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include "header.h"
-void write_str(const char *s, int *len)
+
+void	write_str(const char *s, int *len)
 {
-    ssize_t i;
-    i = 0;
-    if (!s)
-    {
-        write_str("(null)", len);
-        return ;
-    }
-    while(s[i])
-        write_char(s[i++], len);
+	ssize_t	i;
+
+	i = 0;
+	if (!s)
+	{
+		write_str("(null)", len);
+		return ;
+	}
+	while (s[i])
+		write_char(s[i++], len);
 }

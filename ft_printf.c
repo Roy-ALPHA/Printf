@@ -34,15 +34,16 @@ static void	help_func(char c, int *len, va_list arg)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list arg;
-	int i,  (count), (*len);
+	va_list	arg;
+
+	int i, (count), (*len);
 	count = 0;
 	len = &count;
 	i = 0;
 	if (!format)
-		return 0;
+		return (0);
 	va_start(arg, format);
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
@@ -52,9 +53,9 @@ int	ft_printf(const char *format, ...)
 		else
 			write_char(format[i], len);
 		if (*len == -1)
-			return(-1);
+			return (-1);
 		i++;
 	}
 	va_end(arg);
-	return(count);
+	return (count);
 }

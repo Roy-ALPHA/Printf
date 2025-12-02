@@ -6,7 +6,7 @@
 /*   By: yoelboud <yoelboud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:22:21 by yoelboud          #+#    #+#             */
-/*   Updated: 2025/11/19 18:44:05 by yoelboud         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:26:58 by yoelboud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ static int	count_digit(unsigned long addr)
 	return (count);
 }
 
-static void	fill_str(char *str, int count, unsigned long addr)
+static void	fill_str(char *str, int count, unsigned long addr, int bool)
 {
 	char	*hex;
 
-	hex = "0123456789abcdef";
+	if (bool == 1 || bool == 0)
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
 	while (count)
 	{
 		str[--count] = hex[addr % 16];
@@ -39,13 +42,11 @@ static void	fill_str(char *str, int count, unsigned long addr)
 	}
 }
 
-void	printhex(va_list arg, int *len)
+void	printhex(unsigned long addr, int *len, int bool)
 {
-	int				count;
-	unsigned long	addr;
-	char			*str;
+	int		count;
+	char	*str;
 
-	addr = (unsigned long)va_arg(arg, void *);
 	if (!addr)
 	{
 		write_str("(nil)", len);
@@ -55,12 +56,13 @@ void	printhex(va_list arg, int *len)
 	str = malloc(count + 1);
 	if (!str)
 		return ;
-	*len += write(1, "0x", 2);
+	if (bool == 1)
+		*len += write(1, "0x", 2);
 	str[count] = '\0';
 	if (!addr)
 		str[0] = '0';
 	else
-		fill_str(str, count, addr);
+		fill_str(str, count, addr, bool);
 	write_str(str, len);
 	free(str);
 }

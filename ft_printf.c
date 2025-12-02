@@ -6,7 +6,7 @@
 /*   By: yoelboud <yoelboud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:48:03 by yoelboud          #+#    #+#             */
-/*   Updated: 2025/11/19 19:03:08 by yoelboud         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:30:51 by yoelboud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ static void	help_func(char c, int *len, va_list arg)
 	else if (c == 'u')
 		ft_putnbr_unsigned(va_arg(arg, unsigned int), len);
 	else if (c == 'p')
-		printhex(arg, len);
+		printhex((unsigned long)va_arg(arg, void *), len, 1);
 	else if (c == 'x')
-		print_x(arg, len);
+		printhex((unsigned long)va_arg(arg, unsigned int), len, 0);
 	else if (c == 'X')
-		print_X(arg, len);
+		printhex((unsigned long)va_arg(arg, unsigned int), len, 2);
+	else
+		*len = -1;
 }
 
 int	ft_printf(const char *format, ...)

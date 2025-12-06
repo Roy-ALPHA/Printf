@@ -1,5 +1,5 @@
 CC = cc 
-CFLANGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 RM = rm -rf
 ARC = ar rcs
@@ -13,8 +13,8 @@ $(NAME): $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
-fclean:
+fclean: clean
 	$(RM) $(NAME)
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re

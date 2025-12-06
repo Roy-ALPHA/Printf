@@ -6,7 +6,7 @@
 /*   By: yoelboud <yoelboud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:22:21 by yoelboud          #+#    #+#             */
-/*   Updated: 2025/12/02 13:26:58 by yoelboud         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:51:12 by yoelboud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	printhex(unsigned long addr, int *len, int bool)
 	int		count;
 	char	*str;
 
-	if (!addr)
+	if (!addr && bool == 1)
 	{
 		write_str("(nil)", len);
 		return ;
